@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdnsoh8oi1npo"]
+
+[ext_resource type="Script" path="res://GPT/scripts/GPT.gd" id="1_f24y8"]
+
+[node name="GPT" type="HTTPRequest"]
+script = ExtResource("1_f24y8")
+request_file_path = "Request.json"
+path_to_initial_prompt_file = "Initial_prompt.txt"
+path_work_file = "Work_file.txt"
+
+[node name="Label" type="Label" parent="."]
+offset_right = 767.0
+offset_bottom = 219.0
+autowrap_mode = 3
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -209.0
+offset_right = 566.0
+grow_vertical = 0
+size_flags_horizontal = 10
+size_flags_vertical = 8
+placeholder_text = "input thine text beach"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -177.0
+offset_top = -96.0
+offset_right = -23.0
+offset_bottom = -55.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Press mich!"
+
+[node name="Button2" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -157.0
+offset_right = -21.0
+offset_bottom = -113.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "command"
+
+[connection signal="received" from="." to="." method="_on_received"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
