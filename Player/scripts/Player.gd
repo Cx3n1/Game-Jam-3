@@ -1,5 +1,5 @@
-class_name Player
 extends CharacterBody2D
+class_name Player
 
 
 const JUMP_FORCE = 1000			# Force applied on jumping (pixel/second^2)
@@ -17,6 +17,7 @@ const HIDE_OPACITY = 0.2		# Determines the opacity of player sprite when hiding
 
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")				# Gravity applied every second (pixel/second^2)
 
+signal facing_directin_changed(facing_left : bool)
 
 @onready
 var state_machine : StateMachine = $StateMachine
@@ -91,7 +92,9 @@ func _update_facing_direction():
 		sprite.flip_h = false
 	elif dir < 0: # left
 		sprite.flip_h = true
-
+	
+	emit_signal("facing_directin_changed", sprite.flip_h)
+	
 
 
 

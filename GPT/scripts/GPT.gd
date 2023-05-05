@@ -135,17 +135,6 @@ func _rewrite_file(file, text):
 
 
 
-var once = true
-
-
-func _on_received(response) -> void:
-	return
-	if once:
-		prompt_gpt("Human: OW SHIT! SHIT! SHIT! *starts running*")
-		once = false
-
-
-
 func _on_button_pressed() -> void:
 	var prompt:String = $TextEdit.text
 	$TextEdit.clear()

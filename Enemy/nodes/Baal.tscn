@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bgmsxv4cxrc4t"]
+[gd_scene load_steps=24 format=3 uid="uid://bgmsxv4cxrc4t"]
 
 [ext_resource type="Texture2D" uid="uid://csgf6uun5atu1" path="res://Enemy/assets/NightBorne.png" id="1_iwdp4"]
 [ext_resource type="Script" path="res://Enemy/scripts/Baal.gd" id="1_o6881"]
+[ext_resource type="Script" path="res://Enemy/scripts/Damageable.gd" id="3_jundk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yb5os"]
 
@@ -297,6 +298,9 @@ graph_offset = Vector2(61, 22)
 [node name="Baal" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_o6881")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("3_jundk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 9)

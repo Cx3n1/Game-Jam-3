@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=3 uid="uid://c1tqswv3a66l2"]
+[gd_scene load_steps=122 format=3 uid="uid://sht2trxmqb53"]
 
 [ext_resource type="Script" path="res://Player/scripts/Player.gd" id="1_36u0r"]
 [ext_resource type="Script" path="res://Player/scripts/State_Debug.gd" id="2_mcbve"]
@@ -28,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://bwmshl5ty4sd" path="res://Player/assets/Player Sword Idle .png" id="25_ku885"]
 [ext_resource type="Texture2D" uid="uid://6as0vp8tu3wa" path="res://Player/assets/Player Sword Run.png" id="26_lyjjx"]
 [ext_resource type="Script" path="res://Player/scripts/Sword_regular.gd" id="28_itl56"]
+[ext_resource type="Script" path="res://Player/scripts/FacingCollisionShape2D.gd" id="29_miufq"]
+[ext_resource type="Script" path="res://Player/scripts/Sword_stab.gd" id="30_qhbbt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tn17s"]
 radius = 9.0
@@ -1099,6 +1101,54 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sword_regular:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sword_regular:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sword_stab:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sword_stab:monitoring")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_hsfo4"]
 resource_name = "Roll"
@@ -1366,6 +1416,30 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sword_regular:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sword_regular:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_txwxj"]
@@ -1668,6 +1742,30 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sword_stab:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.29),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sword_stab:monitoring")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.18, 0.29),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_a8l0b"]
@@ -2309,8 +2407,8 @@ script = ExtResource("2_mcbve")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_01fmj")
-hframes = 6
+texture = ExtResource("3_ul365")
+hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -2352,25 +2450,42 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_6808r")
 parameters/Move/blend_position = Vector2(0, 0)
 
-[node name="Sword_regular" type="Area2D" parent="."]
+[node name="Sword_regular" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
+visible = false
 collision_layer = 0
 collision_mask = 2
+monitoring = false
 monitorable = false
 script = ExtResource("28_itl56")
+hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_regular"]
 position = Vector2(17.5, -4)
 shape = SubResource("RectangleShape2D_7fj8y")
 debug_color = Color(1, 0, 0.105882, 0.419608)
+script = ExtResource("29_miufq")
+facing_left_position = Vector2(-17.5, -4)
+facing_right_position = Vector2(17.5, -4)
 
-[node name="Sword_stab" type="Area2D" parent="."]
+[node name="Sword_stab" type="Area2D" parent="." node_paths=PackedStringArray("hitbox")]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = ExtResource("30_qhbbt")
+hitbox = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword_stab"]
 position = Vector2(15.5, 2.25)
 shape = SubResource("RectangleShape2D_8gtxa")
 debug_color = Color(0.74902, 0.203922, 1, 0.419608)
+script = ExtResource("29_miufq")
+facing_left_position = Vector2(-15.5, 2.25)
+facing_right_position = Vector2(15.5, 2.25)
 
 [connection signal="transitioned" from="StateMachine" to="State_Debug" method="_on_state_machine_transitioned"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Landing" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Attack" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Sword_regular" to="Sword_regular" method="_on_body_entered"]
+[connection signal="body_entered" from="Sword_stab" to="Sword_stab" method="_on_body_entered"]
