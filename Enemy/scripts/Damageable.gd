@@ -12,7 +12,9 @@ func hit(damage : int):
 	
 	if(health <= 0):
 		# TODO: do death animation and start timer after which queue free
+		print("aqlemi")
 		get_parent().queue_free()
+
 	
 
 

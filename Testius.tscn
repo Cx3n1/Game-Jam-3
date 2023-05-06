@@ -28,20 +28,21 @@ script = ExtResource("3_posea")
 [node name="Timer" type="Timer" parent="Player/Camera2D"]
 
 [node name="Health" parent="Player/Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("4_x5hdb")]
-offset_left = -356.0
-offset_top = -180.0
-offset_right = -245.0
-offset_bottom = -172.0
+offset_left = -380.0
+offset_top = -226.0
+offset_right = -269.0
+offset_bottom = -218.0
 player = NodePath("../..")
 
 [node name="Stamina" parent="Player/Camera2D" node_paths=PackedStringArray("player") instance=ExtResource("6_vavc7")]
-offset_left = -356.0
-offset_top = -170.0
-offset_right = -245.0
-offset_bottom = -162.0
+offset_left = -380.0
+offset_top = -216.0
+offset_right = -269.0
+offset_bottom = -208.0
 player = NodePath("../..")
 
-[node name="Baal" parent="." instance=ExtResource("3_c8vtk")]
+[node name="Baal" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_c8vtk")]
 position = Vector2(396, 221)
+player = NodePath("../Player")
 
 [connection signal="timeout" from="Player/Camera2D/Timer" to="Player/Camera2D" method="_on_timer_timeout"]
