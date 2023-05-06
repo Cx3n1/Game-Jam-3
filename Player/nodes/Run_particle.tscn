@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c48vhi5es2kxo"]
+
+[ext_resource type="Texture2D" uid="uid://cqxblwdddx343" path="res://Player/assets/particles/ground_particles.png" id="1_ul22o"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5vsni"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gsi2u"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+direction = Vector3(1, -1, 0)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 12.0
+initial_velocity_max = 15.0
+angular_velocity_min = 62.61
+angular_velocity_max = 212.87
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = 5.22
+linear_accel_max = 5.22
+anim_speed_min = 1.29
+anim_speed_max = 2.45
+
+[node name="Run_particle" type="GPUParticles2D"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_5vsni")
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_gsi2u")
+texture = ExtResource("1_ul22o")
+speed_scale = 2.62
+explosiveness = 0.18
+randomness = 0.33

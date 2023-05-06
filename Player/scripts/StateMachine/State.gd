@@ -9,6 +9,9 @@ var can_move = true # defines if character can move in this state
 @export
 var can_face = true
 
+@export
+var is_imune = false
+
 var state_machine: StateMachine
 
 var character: Player
