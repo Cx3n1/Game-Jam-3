@@ -381,30 +381,6 @@ render_offset = 0.0
 
 [node name="MainMap" type="Node2D"]
 
-[node name="TileMap" type="TileMap" parent="."]
-texture_filter = 1
-position = Vector2(-4, 1)
-tile_set = SubResource("TileSet_gr8wn")
-format = 2
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(8, 1)
-collision_mask = 0
-
-[node name="SS2D_Shape_Closed" type="Node2D" parent="StaticBody2D"]
-texture_filter = 1
-texture_repeat = 2
-position = Vector2(-14.537, 15.1635)
-script = ExtResource("2_x2vr0")
-_points = SubResource("Resource_uv77u")
-shape_material = SubResource("Resource_x8nji")
-collision_polygon_node_path = NodePath("../CollisionPolygon2D")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-visible = false
-modulate = Color(1, 1, 1, 0.3)
-polygon = PackedVector2Array(-10.7062, -22.8345, -0.430193, -24.2987, 12.3786, -25.1967, 44.0734, -25.4138, 121.128, -20.3616, 196.128, -9.5754, 225.254, -2.62468, 236.393, 1.13647, 240.94, 3.07543, 244.742, 5.04859, 246.85, 6.01467, 249.741, 6.92761, 257.77, 8.5954, 282.082, 11.3355, 357.868, 14.7126, 870.426, 9.62324, 1373.2, 16.1938, 3649.99, -5.01555, 5145.11, -860.206, 5215.11, 105.09, 2024, 454.004, 1211.06, 325.02, 404.797, 663.759, 291.101, 704.571, 256.84, 713.943, 251.087, 714.925, 246.544, 715.325, 243.253, 715.127, 241.258, 714.296, 239.222, 713.024, 235.813, 711.5, 225.056, 707.737, 189.039, 697.582, -783.868, 488.378, -1017, 222.206, -1076.7, -478.496, -419.927, -777.894, -418.902, -734.012, -406.117, -622.737, -390.973, -551.038, -367.656, -473.579, -334.411, -394.076, -313.518, -354.717, -289.484, -316.238, -194.816, -183.84, -116.508, -90.2572, -83.6255, -58.2792, -68.7752, -46.0386, -54.9946, -36.3144, -42.2908, -29.1189, -36.3448, -26.4734, -30.6703, -24.4653, -25.2684, -23.0958, -20.1399, -22.3668, -15.2856, -22.279, -12.9615, -22.4762)
-
 [node name="Player" parent="." instance=ExtResource("18_co5o3")]
 position = Vector2(76, -100)
 
@@ -430,5 +406,29 @@ offset_right = -320.0
 offset_bottom = -202.0
 scale = Vector2(1.3, 1.3)
 player = NodePath("../..")
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+position = Vector2(-4, 1)
+tile_set = SubResource("TileSet_gr8wn")
+format = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(8, 1)
+collision_mask = 0
+
+[node name="SS2D_Shape_Closed" type="Node2D" parent="StaticBody2D"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-14.537, 15.1635)
+script = ExtResource("2_x2vr0")
+_points = SubResource("Resource_uv77u")
+shape_material = SubResource("Resource_x8nji")
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(-10.7062, -22.8345, -0.430193, -24.2987, 12.3786, -25.1967, 44.0734, -25.4138, 121.128, -20.3616, 196.128, -9.5754, 225.254, -2.62468, 236.393, 1.13647, 240.94, 3.07543, 244.742, 5.04859, 246.85, 6.01467, 249.741, 6.92761, 257.77, 8.5954, 282.082, 11.3355, 357.868, 14.7126, 870.426, 9.62324, 1373.2, 16.1938, 3649.99, -5.01555, 5145.11, -860.206, 5215.11, 105.09, 2024, 454.004, 1211.06, 325.02, 404.797, 663.759, 291.101, 704.571, 256.84, 713.943, 251.087, 714.925, 246.544, 715.325, 243.253, 715.127, 241.258, 714.296, 239.222, 713.024, 235.813, 711.5, 225.056, 707.737, 189.039, 697.582, -783.868, 488.378, -1017, 222.206, -1076.7, -478.496, -419.927, -777.894, -418.902, -734.012, -406.117, -622.737, -390.973, -551.038, -367.656, -473.579, -334.411, -394.076, -313.518, -354.717, -289.484, -316.238, -194.816, -183.84, -116.508, -90.2572, -83.6255, -58.2792, -68.7752, -46.0386, -54.9946, -36.3144, -42.2908, -29.1189, -36.3448, -26.4734, -30.6703, -24.4653, -25.2684, -23.0958, -20.1399, -22.3668, -15.2856, -22.279, -12.9615, -22.4762)
 
 [connection signal="timeout" from="Player/Camera2D/Timer" to="Player/Camera2D" method="_on_timer_timeout"]
