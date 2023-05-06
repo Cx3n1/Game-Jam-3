@@ -17,33 +17,33 @@
 [ext_resource type="Texture2D" uid="uid://uvvm1be3fpbs" path="res://Map/assets/fill.png" id="15_kcsll"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="16_ul20m"]
 
-[sub_resource type="Resource" id="Resource_tuu1o"]
+[sub_resource type="Resource" id="Resource_b434r"]
 script = ExtResource("2_80bbt")
-texture_idx = 0
+texture_idx = 7
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_mnsv5"]
 script = ExtResource("3_3et0b")
-position = Vector2(14.4254, -8.33298)
-point_in = Vector2(-20.5061, 21.39)
-point_out = Vector2(20.5061, -21.39)
-properties = SubResource("Resource_tuu1o")
+position = Vector2(3.83076, -37.998)
+point_in = Vector2(-47.3762, 9.36919)
+point_out = Vector2(47.3762, -9.36919)
+properties = SubResource("Resource_b434r")
 
-[sub_resource type="Resource" id="Resource_ijn5p"]
+[sub_resource type="Resource" id="Resource_o16en"]
 script = ExtResource("2_80bbt")
-texture_idx = 0
+texture_idx = 7
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_oh3vo"]
 script = ExtResource("3_3et0b")
-position = Vector2(14.4254, -8.33298)
-point_in = Vector2(-20.5061, 21.39)
-point_out = Vector2(20.5061, -21.39)
-properties = SubResource("Resource_ijn5p")
+position = Vector2(3.83076, -37.998)
+point_in = Vector2(-47.3762, 9.36919)
+point_out = Vector2(47.3762, -9.36919)
+properties = SubResource("Resource_o16en")
 
-[sub_resource type="Resource" id="Resource_a7vqe"]
+[sub_resource type="Resource" id="Resource_bhfev"]
 script = ExtResource("2_80bbt")
 texture_idx = 0
 flip = false
@@ -51,23 +51,23 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_ke0sa"]
 script = ExtResource("3_3et0b")
-position = Vector2(106.633, -8.33298)
+position = Vector2(259.279, -10.1148)
 point_in = Vector2(-36.416, -21.2132)
 point_out = Vector2(36.416, 21.2132)
-properties = SubResource("Resource_a7vqe")
+properties = SubResource("Resource_bhfev")
 
-[sub_resource type="Resource" id="Resource_gyegc"]
+[sub_resource type="Resource" id="Resource_qim04"]
 script = ExtResource("2_80bbt")
-texture_idx = 0
+texture_idx = -8
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_ifbm8"]
 script = ExtResource("3_3et0b")
-position = Vector2(21.1072, 63.8298)
+position = Vector2(255.795, 699.131)
 point_in = Vector2(28.4611, 24.3952)
 point_out = Vector2(-28.4611, -24.3952)
-properties = SubResource("Resource_gyegc")
+properties = SubResource("Resource_qim04")
 
 [sub_resource type="Resource" id="Resource_e123i"]
 script = ExtResource("4_52wne")
