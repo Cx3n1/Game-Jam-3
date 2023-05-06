@@ -1,7 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-
 const JUMP_FORCE = 1000			# Force applied on jumping (pixel/second^2)
 const DEFAULT_MOVE_SPEED = 400	# Speed to walk with (pixel/second)
 const CROUNCH_MOVE_SPEED = 100	# speed when crouching (pixel/second)

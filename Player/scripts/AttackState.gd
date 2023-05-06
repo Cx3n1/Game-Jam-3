@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 func on_enter(_msg:={}):
+	Globs.shake()
 	if character.armed:
 		playback.travel(melee_attacks[0])
 	else:

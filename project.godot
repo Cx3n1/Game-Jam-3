@@ -15,6 +15,11 @@ run/main_scene="res://Testius.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globs="*res://globs.gd"
+Globvars="*res://globvars.gd"
+
 [display]
 
 window/size/viewport_width=768
@@ -22,9 +27,13 @@ window/size/viewport_height=432
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[editor]
+
+run/main_run_args="--rendering-driver opengl3"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg", "res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/gut/plugin.cfg", "res://addons/rmsmartshape/plugin.cfg")
 
 [input]
 

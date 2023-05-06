@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://sw8701053nv2"]
+[gd_scene load_steps=5 format=3 uid="uid://sw8701053nv2"]
 
-[ext_resource type="PackedScene" uid="uid://c1tqswv3a66l2" path="res://Player/nodes/Player.tscn" id="2_eljd6"]
+[ext_resource type="PackedScene" uid="uid://sht2trxmqb53" path="res://Player/nodes/Player.tscn" id="2_eljd6"]
 [ext_resource type="PackedScene" uid="uid://tb1ljqsh38cc" path="res://Map/nodes/SmartMap.tscn" id="2_krd3b"]
 [ext_resource type="PackedScene" uid="uid://bgmsxv4cxrc4t" path="res://Enemy/nodes/Baal.tscn" id="3_c8vtk"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_posea"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -17,5 +18,12 @@ position = Vector2(452, 285)
 [node name="Player" parent="." instance=ExtResource("2_eljd6")]
 position = Vector2(251, 140)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+script = ExtResource("3_posea")
+
+[node name="Timer" type="Timer" parent="Player/Camera2D"]
+
 [node name="Baal" parent="." instance=ExtResource("3_c8vtk")]
 position = Vector2(396, 221)
+
+[connection signal="timeout" from="Player/Camera2D/Timer" to="Player/Camera2D" method="_on_timer_timeout"]
