@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://tyx673uys2w7"]
+[gd_scene load_steps=140 format=3 uid="uid://tyx673uys2w7"]
 
 [ext_resource type="Script" path="res://Player/scripts/Player.gd" id="1_36u0r"]
 [ext_resource type="Script" path="res://Player/scripts/State_Debug.gd" id="2_mcbve"]
@@ -18,14 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://dd762dx3o0w7e" path="res://Player/assets/player crouch-walk.png" id="8_a3wj4"]
 [ext_resource type="Script" path="res://Player/scripts/AttackState.gd" id="8_k04pt"]
 [ext_resource type="Texture2D" uid="uid://bx463pb8mdgsm" path="res://Player/assets/player air spin.png" id="9_06j02"]
-[ext_resource type="Texture2D" uid="uid://ci8smmcklprdb" path="res://Player/assets/Player Idle.png" id="10_0vmev"]
 [ext_resource type="Texture2D" uid="uid://btp2jh844ufie" path="res://Player/assets/player land.png" id="11_xjf14"]
 [ext_resource type="Script" path="res://Player/scripts/Death.gd" id="12_2rre5"]
 [ext_resource type="Texture2D" uid="uid://j0q6u3o7mu5c" path="res://Player/assets/player jump.png" id="12_jdijc"]
 [ext_resource type="Texture2D" uid="uid://colm5amrgi04i" path="res://Player/assets/Player Pull.png" id="13_t0po6"]
 [ext_resource type="Texture2D" uid="uid://b2o02t25u2iil" path="res://Player/assets/player push.png" id="14_gsw1x"]
 [ext_resource type="Texture2D" uid="uid://b08nmwyc4d5d1" path="res://Player/assets/Player Roll.png" id="15_eyfgo"]
-[ext_resource type="Texture2D" uid="uid://dyqppnxumhrnj" path="res://Player/assets/run cycle.png" id="16_5xct5"]
 [ext_resource type="Texture2D" uid="uid://b1028evafnxbj" path="res://Player/assets/wall land.png" id="17_0qarq"]
 [ext_resource type="Texture2D" uid="uid://b4i1dawide7ey" path="res://Player/assets/Wall Slide.png" id="18_yg4k0"]
 [ext_resource type="Texture2D" uid="uid://crgs4fn5rbam7" path="res://Player/assets/player push idle.png" id="21_jkvh1"]
@@ -427,7 +425,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_0vmev")]
+"values": [ExtResource("25_ku885")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1301,7 +1299,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("16_5xct5")]
+"values": [ExtResource("26_lyjjx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2406,8 +2404,8 @@ script = ExtResource("2_mcbve")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("10_0vmev")
-hframes = 10
+texture = ExtResource("26_lyjjx")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

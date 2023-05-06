@@ -575,9 +575,8 @@ shape = SubResource("CapsuleShape2D_yb5os")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_t8kd4")
-hframes = 7
-frame = 5
+texture = ExtResource("4_jff30")
+hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
