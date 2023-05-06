@@ -28,6 +28,11 @@ func _ready() -> void:
 	$Timer.start(IDLE_TIME)
 
 func _physics_process(delta: float) -> void:
+	if player.dead:
+		return
+	if state == "death" || state == "hit":
+		return
+		
 	if not is_on_floor():  # if enemy is not on the ground apply gravity
 		velocity.y += gravity
 
@@ -49,7 +54,6 @@ func _physics_process(delta: float) -> void:
 			#playback.travel("Move", clamp(velocity.x, -1, 1))
 			# Ranged attack if cooldown has elapsed and player is within range
 			if ranged_attack_timer <= 0 and position.distance_to(player.position) < RANGED_ATTACK_DISTANCE:
-				ranged_attack()
 				ranged_attack_timer = RANGED_ATTACK_COOLDOWN
 		
 	if abs(position.x - player.position.x) < GAP_BETWEEN_ENEMY_AND_PLAYER:
@@ -65,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	
 
 func _update_animation():
-	if state != "attack":
+	if state != "attack" && state != "death" && state != "hit":
 		$AnimationTree.set("parameters/Move/blend_position", direction)
 
 func _update_facing_direction():
@@ -81,11 +85,12 @@ func _on_timer_timeout() -> void:
 	elif state == "patrol":
 		state = "idle"
 
-func ranged_attack():
-	# TODO: Implement ranged attack logic here
-	pass
-	
+
 func _process(delta: float):
+	if player.dead:
+		return
+	if state == "death":
+		return
 	# Check the distance between the enemy and the player
 	var distance_between_player_and_enemy = position.distance_to(player.position)
 
@@ -108,8 +113,25 @@ func _on_area_2d_body_entered(body):
 
 func _on_animation_tree_animation_finished(anim_name):
 	#if state == "attack" && anim_name == "Attack":
-	#	state = "idle"
-	$AttackTimer.start(ATTACK_INTERVAL)
+	#state = "idle"
+	if anim_name == "Death":
+		print("anim finished")
+		queue_free()
+		return
+	
+	if state == "death":
+		return
+	
+	if anim_name == "Hit":
+		state == "idle"
+		return
+	
+	if state == "hit":
+		return
+	
+	if anim_name == "Attack":
+		$AttackTimer.start(ATTACK_INTERVAL)
+		return
 
 
 
@@ -123,4 +145,29 @@ func _on_detector_body_exited(body):
 
 
 func _on_attack_timer_timeout():
-	playback.travel("Attack")
+	if(state != "Hit" && state != "Death"):
+		playback.travel("Attack")
+
+
+func _on_damageable_death():
+	state = "death"
+	if $Sprite.flip_h:
+		$Particles.process_material.gravity = Vector3(-100, 0,0)
+	else:
+		$Particles.process_material.gravity = Vector3(100, 0,0)
+		
+	$Particles.emitting = true
+	playback.travel("Death")
+
+
+func _on_damageable_got_hit():
+	if state == "death":
+		return
+	if $Sprite.flip_h:
+		$Particles.process_material.gravity = Vector3(-100, 0,0)
+	else:
+		$Particles.process_material.gravity = Vector3(100, 0,0)
+		
+	$Particles.emitting = true
+	playback.travel("Hit")
+	state = "hit"

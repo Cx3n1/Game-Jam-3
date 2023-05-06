@@ -20,6 +20,7 @@ var attack_stamina = 10
 @export
 var dodge_stamina = 15
 
+var dead = false
 
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")				# Gravity applied every second (pixel/second^2)
 
@@ -133,6 +134,7 @@ func _get_input_direction():
 
 
 func _on_damageable_death():
+	dead = true
 	state_machine.transition_to("Death")
 
 
@@ -141,6 +143,7 @@ func _reset():
 	$StateMachine.transition_to("Air")
 	health.reset()
 	stamina.reset()
+	dead = false
 	#$Chain.release()
 	position = last_checkpoint
 
