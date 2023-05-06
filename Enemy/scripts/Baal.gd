@@ -12,6 +12,7 @@ const RANGED_ATTACK_DISTANCE = 60
 const RANGED_ATTACK_COOLDOWN = 3.0
 
 # Variables
+@onready var sprite = $Sprite
 @onready var playback = $AnimationTree.get("parameters/playback")
 @export var player: Player
 @onready var damageable = $Damageable
@@ -41,10 +42,6 @@ func _physics_process(delta: float) -> void:
 			direction = sign(player.position.x - position.x)
 			velocity.x = direction * SPEED
 			radius_where_enemy_inspecting = radius_where_enemy_inspecting - 1 if direction == -1 else radius_where_enemy_inspecting + 1
-
-			# Attack the player if in melee range
-			if position.distance_to(player.position) < 20:
-				damageable.hit(DAMAGE)
 
 			# Ranged attack if cooldown has elapsed and player is within range
 			if ranged_attack_timer <= 0 and position.distance_to(player.position) < RANGED_ATTACK_DISTANCE:
@@ -96,3 +93,9 @@ func _process(delta: float):
 	# TODO: Check for collision with other objects
 	# TODO: Handle collision with other objects
 	# TODO: Implement
+
+
+func _on_area_2d_body_entered(body):
+	for child in body.get_children():
+		if child is Damageable_player:
+			child.hit(DAMAGE)
