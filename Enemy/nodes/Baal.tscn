@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgmsxv4cxrc4t"]
+[gd_scene load_steps=25 format=3 uid="uid://bgmsxv4cxrc4t"]
 
 [ext_resource type="Texture2D" uid="uid://csgf6uun5atu1" path="res://Enemy/assets/NightBorne.png" id="1_iwdp4"]
 [ext_resource type="Script" path="res://Enemy/scripts/Baal.gd" id="1_o6881"]
@@ -281,6 +281,8 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q52dm"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ddvce"]
 states/Die/node = SubResource("AnimationNodeAnimation_n6k2o")
 states/Die/position = Vector2(662.333, 107.111)
@@ -290,8 +292,8 @@ states/Hit/position = Vector2(547.667, 200)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_gpi1k")
 states/Move/position = Vector2(421, 107.605)
 states/Start/position = Vector2(203.333, 107.16)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_8knya"), "Move", "Hit", SubResource("AnimationNodeStateMachineTransition_bgadb"), "Hit", "Move", SubResource("AnimationNodeStateMachineTransition_a0dbo"), "Move", "Die", SubResource("AnimationNodeStateMachineTransition_ynn6s"), "Die", "End", SubResource("AnimationNodeStateMachineTransition_ga2t0")]
-graph_offset = Vector2(61, 22)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_8knya"), "Move", "Hit", SubResource("AnimationNodeStateMachineTransition_bgadb"), "Hit", "Move", SubResource("AnimationNodeStateMachineTransition_a0dbo"), "Move", "Die", SubResource("AnimationNodeStateMachineTransition_ynn6s"), "Die", "End", SubResource("AnimationNodeStateMachineTransition_ga2t0"), "Hit", "Die", SubResource("AnimationNodeStateMachineTransition_q52dm")]
+graph_offset = Vector2(22, 27)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_o6w3x"]
 
@@ -322,7 +324,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_ddvce")
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_o6w3x")
-parameters/Move/blend_position = 0
+parameters/Move/blend_position = 0.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

@@ -9,8 +9,11 @@ func state_input(event: InputEvent):
 	if(event.is_action_pressed("jump")):
 		character.jump()
 		jumped = true
-	elif (event.is_action_pressed("attack")):
+	elif (event.is_action_pressed("attack") && character.attack_check()):
 		state_machine.transition_to("Attack")
+	elif (event.is_action_pressed("dodge") && character.dodge_check()):
+		state_machine.transition_to("Dodge")
+	
 
 
 @warning_ignore("unused_parameter")
