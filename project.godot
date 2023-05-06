@@ -21,8 +21,8 @@ Globs="*res://globs.gd"
 
 [display]
 
-window/size/viewport_width=660
-window/size/viewport_height=380
+window/size/viewport_width=720
+window/size/viewport_height=512
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

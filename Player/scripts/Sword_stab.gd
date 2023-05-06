@@ -2,7 +2,7 @@ extends Area2D
 
 
 @export
-var standard_damage = 5
+var standard_damage = 30
 # todo add crit chances and stuff
 
 @export
