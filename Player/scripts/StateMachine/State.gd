@@ -6,6 +6,9 @@ class_name State
 @export
 var can_move = true # defines if character can move in this state
 
+@export
+var can_face = true
+
 var state_machine: StateMachine
 
 var character: Player

@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	current_state.state_physics_process(delta)
-	
 
 
 # fills states array and assigns them appropriate properties
@@ -52,6 +51,8 @@ func _fill_states_array():
 func can_move():
 	return current_state.can_move
 
+func can_face():
+	return current_state.can_face
 
 # transitions to the given state and passes on information to the nexst state if provided as msg
 func transition_to(target_state_name: String, msg: Dictionary = {}) -> void:

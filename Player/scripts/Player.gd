@@ -15,9 +15,20 @@ const MAX_JUMP_AMOUNT = 5		# Amount of jumps player is allowed before they touch
 const HIDE_OPACITY = 0.2		# Determines the opacity of player sprite when hiding
 
 
+@export
+var attack_stamina = 10
+
+@export
+var dodge_stamina = 15
+
+
+
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")				# Gravity applied every second (pixel/second^2)
 
 signal facing_directin_changed(facing_left : bool)
+
+@onready
+var stamina: Stamina = $Stamina
 
 @onready
 var state_machine : StateMachine = $StateMachine
@@ -51,16 +62,15 @@ func _process(delta):
 	if(Input.is_action_just_pressed("restart")):
 		_reset()
 	
-	_update_crouching()
+	#_update_crouching()
 	_update_movement()
 	_update_animation()
 	_update_facing_direction()
 
 
-
 # updates crouching
 func _update_crouching():
-	if(Input.is_action_pressed("crouch") && is_on_floor()):
+	if(Input.is_action_pressed("dodge") && is_on_floor()):
 		move_speed = CROUNCH_MOVE_SPEED
 		crouching =  true
 	else:
@@ -80,13 +90,17 @@ func _update_movement():
 
 # updates animation (runs in _process)
 func _update_animation():
+	if !state_machine.can_move():
+		return
 	var move_direction = _get_input_direction() # -1 - left; 0 - idle; 1 - right
-	var crouch_indicator = _get_crouching_index() # 0 - not crouching; -1 - is coruching
+	#var crouch_indicator = _get_crouching_index() # 0 - not crouching; -1 - is coruching
 	
-	animation_tree.set("parameters/Move/blend_position", Vector2(move_direction, crouch_indicator))
+	animation_tree.set("parameters/Move/blend_position", Vector2(move_direction, 0))
 
 # updates sprite facing direction
 func _update_facing_direction():
+	if !state_machine.can_face():
+		return
 	var dir = _get_input_direction()
 	if dir > 0: # right
 		sprite.flip_h = false
@@ -132,6 +146,12 @@ func jump():
 func double_jump():
 	velocity.y = -JUMP_FORCE
 
+
+func attack_check():
+	return stamina.check_decrease(attack_stamina)
+
+func dodge_check():
+	return stamina.check_decrease(dodge_stamina)
 
 # depricated
 func _handle_hook_input(event: InputEvent) -> void:
