@@ -18,6 +18,7 @@ func state_input(event: InputEvent):
 
 @warning_ignore("unused_parameter")
 func state_process(delta):
+	_update_particles()
 	if(!character.is_on_floor()):
 		if(jumped):
 			jumped = false
@@ -26,10 +27,25 @@ func state_process(delta):
 			state_machine.transition_to("Air", {from_ground = true})
 	else:
 		jumped = false
-	
+
 	#character._update_movement()
+
+func _update_particles():
+	if is_zero_approx(character.velocity.x):
+		character.particles.emitting = false
+	elif character.sprite.flip_h:
+		character.particles.emitting = true
+		character.particles.set_to_left()
+	else:
+		character.particles.emitting = true
+		character.particles.set_to_right()
+
 	
 
 func on_enter(_msg:={}):
 	playback.travel("Move")
-	pass
+
+
+func on_exit():
+	character.particles.emitting = false
+

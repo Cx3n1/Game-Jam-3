@@ -27,7 +27,11 @@ func _ready():
 func _process(delta):
 	if recover && current_stamina < MAX_STAMINA:
 		current_stamina += STAMINA_INCREASE*delta
-	print(current_stamina)
+
+
+func reset():
+	current_stamina = MAX_STAMINA
+	timer.stop()
 
 
 func check_decrease(value):

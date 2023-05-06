@@ -21,13 +21,15 @@ var attack_stamina = 10
 var dodge_stamina = 15
 
 
-
 var GRAVITY = ProjectSettings.get_setting("physics/2d/default_gravity")				# Gravity applied every second (pixel/second^2)
 
 signal facing_directin_changed(facing_left : bool)
 
 @onready
 var stamina: Stamina = $Stamina
+
+@onready
+var health: Damageable_player = $Damageable
 
 @onready
 var state_machine : StateMachine = $StateMachine
@@ -41,7 +43,8 @@ var sprite : Sprite2D = $Sprite2D
 @onready 
 var last_checkpoint = self.global_position # checkpoint system
 
-var hp = 100 # health points
+@onready
+var particles = $Run_particle
 
 var jump_count = 2
 
@@ -54,18 +57,22 @@ var crouching = false
 var armed = true
 
 func _ready():
+	particles.emitting = false
 	animation_tree.active = true
+	
 
 @warning_ignore("unused_parameter")
 func _process(delta):
 	if(Input.is_action_just_pressed("restart")):
 		_reset()
 	
+	if(Input.is_action_just_pressed("test hurt")):
+		health.hit(10)
+	
 	#_update_crouching()
 	_update_movement()
 	_update_animation()
 	_update_facing_direction()
-
 
 # updates crouching
 func _update_crouching():
@@ -107,8 +114,6 @@ func _update_facing_direction():
 		sprite.flip_h = true
 	
 	emit_signal("facing_directin_changed", sprite.flip_h)
-	
-
 
 
 # to get crouching index if crouching -1 if not 0
@@ -126,10 +131,16 @@ func _get_input_direction():
 	
 	return direction
 
+
+func _on_damageable_death():
+	state_machine.transition_to("Death")
+
+
 # to reset character to the starting position (define as you wish)
 func _reset():
 	$StateMachine.transition_to("Air")
-	hp = 100
+	health.reset()
+	stamina.reset()
 	#$Chain.release()
 	position = last_checkpoint
 
@@ -192,3 +203,5 @@ func manage_hook_physics(delta):
 		$Chain.release()
 	
 	velocity += chain_velocity
+
+

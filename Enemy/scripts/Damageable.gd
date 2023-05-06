@@ -2,11 +2,12 @@ extends Node
 
 class_name Damageable
 
-@export var health : float = 20
+@export var health : float = 100
 
 
 func hit(damage : int):
 	# TODO: do hit animation
+	Globs.shake(10, 0.2)
 	health -= damage
 	
 	if(health <= 0):

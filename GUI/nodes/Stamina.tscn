@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bapicbnhaq1k6"]
+
+[ext_resource type="Script" path="res://GUI/scripts/Stamina.gd" id="1_gg0gv"]
+[ext_resource type="Texture2D" uid="uid://cqrthyk07cufq" path="res://GUI/sprites/stamina.png" id="1_mfoan"]
+[ext_resource type="Texture2D" uid="uid://bcxurp8ekuto7" path="res://GUI/sprites/blue.png" id="2_jbh3s"]
+
+[node name="Stamina" type="HBoxContainer"]
+script = ExtResource("1_gg0gv")
+
+[node name="Bar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("1_mfoan")
+texture_progress = ExtResource("2_jbh3s")
+texture_progress_offset = Vector2(0, 1)

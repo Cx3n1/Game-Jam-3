@@ -27,7 +27,7 @@ func state_input(event):
 
 
 func on_enter(_msg:={}):
-	Globs.shake()
+	#Globs.shake()
 	if character.armed:
 		playback.travel(melee_attacks[0])
 	else:
@@ -43,12 +43,13 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if(state_machine.current_state != self):
 		return
 		
-	if timer.is_stopped() || anim_name == melee_attacks.back() || anim_name == hand_to_hand_attacks.back():
+	if timer.is_stopped() || anim_name == melee_attacks.back() || anim_name == hand_to_hand_attacks.back() || anim_name == "Hurt":
 		state_machine.transition_to("Ground")
 		return
 	timer.stop()
 	
 	if !character.attack_check():
+		state_machine.transition_to("Ground")
 		return
 	
 	current_attack_index += 1

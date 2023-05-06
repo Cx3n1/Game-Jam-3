@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://u2xj38gako1k"]
+
+[ext_resource type="Script" path="res://GUI/scripts/Health.gd" id="1_h6v0b"]
+[ext_resource type="Texture2D" uid="uid://bd0jubmx5rwbh" path="res://GUI/sprites/health.png" id="1_kvkoo"]
+[ext_resource type="Texture2D" uid="uid://dd85alw0sm8fk" path="res://GUI/sprites/red.png" id="2_ww1hq"]
+
+[node name="Health" type="HBoxContainer"]
+script = ExtResource("1_h6v0b")
+
+[node name="Bar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 2
+value = 100.0
+texture_over = ExtResource("1_kvkoo")
+texture_progress = ExtResource("2_ww1hq")
+texture_progress_offset = Vector2(0, 1)
