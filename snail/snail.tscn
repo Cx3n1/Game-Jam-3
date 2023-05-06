@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1212d7yi2hda"]
+
+[ext_resource type="Script" path="res://snail/CharacterBody2D.gd" id="2_g48d2"]
+[ext_resource type="Script" path="res://snail/Walk.gd" id="3_4tiha"]
+[ext_resource type="Script" path="res://snail/Dead.gd" id="4_31otd"]
+[ext_resource type="Script" path="res://snail/Hit.gd" id="5_3okpn"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("2_g48d2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Walk" type="Node" parent="."]
+script = ExtResource("3_4tiha")
+
+[node name="Dead" type="Node" parent="."]
+script = ExtResource("4_31otd")
+
+[node name="Hit" type="Node" parent="."]
+script = ExtResource("5_3okpn")
+dead_animation_node = null
+can_move = null
+
+[node name="Timer" type="Timer" parent="Hit"]
+
+[connection signal="timeout" from="Hit/Timer" to="Hit" method="_on_timer_timeout"]

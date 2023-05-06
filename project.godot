@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globs="*res://globs.gd"
 Globvars="*res://globvars.gd"
+Snail="*res://snail.gd"
 
 [display]
 
