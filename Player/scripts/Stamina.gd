@@ -6,10 +6,10 @@ class_name Stamina
 var MAX_STAMINA = 100
 
 @export
-var STAMINA_INCREASE = 5
+var STAMINA_INCREASE = 30
 
 @export
-var STAMINA_COOLDOWN = 1 # after what time does stamina increase
+var STAMINA_COOLDOWN = 1.5 # after what time does stamina increase
 
 @onready
 var timer = $Timer
