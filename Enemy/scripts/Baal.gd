@@ -3,13 +3,14 @@ extends CharacterBody2D
 # Constants
 const SPEED = 120.0
 const CHASE_DISTANCE = 100.0
-const IDLE_TIME = 2.0
-const GAP_BETWEEN_ENEMY_AND_PLAYER = 30
+const IDLE_TIME = 3
+const GAP_BETWEEN_ENEMY_AND_PLAYER = 20
 const DAMAGE = 30
 const INSPECTING_RADIUS = 50
 const PATROL_DISTANCE = 75
 const RANGED_ATTACK_DISTANCE = 60
 const RANGED_ATTACK_COOLDOWN = 3.0
+const ATTACK_INTERVAL = 1
 
 # Variables
 @onready var sprite = $Sprite
@@ -23,6 +24,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var ranged_attack_timer = 0.0
 
 func _ready() -> void:
+	$AnimationTree.active = true
 	$Timer.start(IDLE_TIME)
 
 func _physics_process(delta: float) -> void:
@@ -33,16 +35,18 @@ func _physics_process(delta: float) -> void:
 	match state:
 		"idle":
 			velocity.x = move_toward(velocity.x, 0, SPEED) # Move towards 0 with given speed
+			#playback.travel("Move", 0)
 		"patrol":
 			velocity.x = direction * SPEED # Move in patrol direction with given speed
 			if abs(position.x - player.poosition.x) > PATROL_DISTANCE: # If enemy exceeds the patrol distance, change direction
 				direction = -direction
+			#playback.travel("Move", clamp(velocity.x, -1, 1))
 		"chase":
 			# If distance is less then actual gap then always move in opposite direction of the player 		
 			direction = sign(player.position.x - position.x)
 			velocity.x = direction * SPEED
 			radius_where_enemy_inspecting = radius_where_enemy_inspecting - 1 if direction == -1 else radius_where_enemy_inspecting + 1
-
+			#playback.travel("Move", clamp(velocity.x, -1, 1))
 			# Ranged attack if cooldown has elapsed and player is within range
 			if ranged_attack_timer <= 0 and position.distance_to(player.position) < RANGED_ATTACK_DISTANCE:
 				ranged_attack()
@@ -61,7 +65,8 @@ func _physics_process(delta: float) -> void:
 	
 
 func _update_animation():
-	$AnimationTree.set("parameters/move/blend_position", direction)
+	if state != "attack":
+		$AnimationTree.set("parameters/Move/blend_position", direction)
 
 func _update_facing_direction():
 	if direction > 0:  # right
@@ -99,3 +104,23 @@ func _on_area_2d_body_entered(body):
 	for child in body.get_children():
 		if child is Damageable_player:
 			child.hit(DAMAGE)
+
+
+func _on_animation_tree_animation_finished(anim_name):
+	#if state == "attack" && anim_name == "Attack":
+	#	state = "idle"
+	$AttackTimer.start(ATTACK_INTERVAL)
+
+
+
+func _on_detector_body_entered(body):
+	state = "attack"
+	playback.travel("Attack")
+
+
+func _on_detector_body_exited(body):
+	state == "idle"
+
+
+func _on_attack_timer_timeout():
+	playback.travel("Attack")
