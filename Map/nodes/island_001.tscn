@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://uvvm1be3fpbs" path="res://Map/assets/fill.png" id="15_kcsll"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="16_ul20m"]
 
-[sub_resource type="Resource" id="Resource_b434r"]
+[sub_resource type="Resource" id="Resource_yx13w"]
 script = ExtResource("2_80bbt")
 texture_idx = 7
 flip = false
@@ -28,9 +28,9 @@ script = ExtResource("3_3et0b")
 position = Vector2(3.83076, -37.998)
 point_in = Vector2(-47.3762, 9.36919)
 point_out = Vector2(47.3762, -9.36919)
-properties = SubResource("Resource_b434r")
+properties = SubResource("Resource_yx13w")
 
-[sub_resource type="Resource" id="Resource_o16en"]
+[sub_resource type="Resource" id="Resource_cng37"]
 script = ExtResource("2_80bbt")
 texture_idx = 7
 flip = false
@@ -41,9 +41,9 @@ script = ExtResource("3_3et0b")
 position = Vector2(3.83076, -37.998)
 point_in = Vector2(-47.3762, 9.36919)
 point_out = Vector2(47.3762, -9.36919)
-properties = SubResource("Resource_o16en")
+properties = SubResource("Resource_cng37")
 
-[sub_resource type="Resource" id="Resource_bhfev"]
+[sub_resource type="Resource" id="Resource_tpv81"]
 script = ExtResource("2_80bbt")
 texture_idx = 0
 flip = false
@@ -54,9 +54,9 @@ script = ExtResource("3_3et0b")
 position = Vector2(259.279, -10.1148)
 point_in = Vector2(-36.416, -21.2132)
 point_out = Vector2(36.416, 21.2132)
-properties = SubResource("Resource_bhfev")
+properties = SubResource("Resource_tpv81")
 
-[sub_resource type="Resource" id="Resource_qim04"]
+[sub_resource type="Resource" id="Resource_0vgyy"]
 script = ExtResource("2_80bbt")
 texture_idx = -8
 flip = false
@@ -67,7 +67,7 @@ script = ExtResource("3_3et0b")
 position = Vector2(255.795, 699.131)
 point_in = Vector2(28.4611, 24.3952)
 point_out = Vector2(-28.4611, -24.3952)
-properties = SubResource("Resource_qim04")
+properties = SubResource("Resource_0vgyy")
 
 [sub_resource type="Resource" id="Resource_e123i"]
 script = ExtResource("4_52wne")
@@ -195,4 +195,4 @@ collision_polygon_node_path = NodePath("../CollisionPolygon2D")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 visible = false
 modulate = Color(1, 1, 1, 0.3)
-polygon = PackedVector2Array(-0.111976, 6.83015, 3.90268, 3.07193, 8.2439, -0.181438, 12.8915, -2.93086, 17.8256, -5.17712, 23.0261, -6.92099, 28.473, -8.16325, 34.1463, -8.9047, 40.026, -9.14612, 46.0922, -8.88828, 52.3248, -8.13235, 65.2095, -5.12777, 78.52, -0.138079, 92.0963, 6.83002, 93.7089, 7.86353, 95.1358, 8.97269, 96.3813, 10.1541, 97.4499, 11.4043, 98.3461, 12.7198, 99.0743, 14.0969, 99.6389, 15.5322, 100.044, 17.0222, 100.295, 18.5633, 100.396, 20.1519, 100.351, 21.7846, 100.166, 23.458, 99.3879, 26.9121, 98.0985, 30.4861, 96.3337, 34.1518, 94.1293, 37.8813, 88.5432, 45.4183, 81.6256, 52.8713, 73.6623, 60.0154, 64.9388, 66.625, 55.7406, 72.4748, 46.3531, 77.3395, 37.0618, 80.9932, 32.5415, 82.2955, 28.1523, 83.2109, 23.93, 83.711, 19.9102, 83.7677, 16.1285, 83.3521, 14.3383, 82.9584, 12.6209, 82.4365, 10.9809, 81.7827, 9.4227, 80.9933, 7.95086, 80.0648, 6.56991, 78.9936, 1.57937, 74.3979, -2.72978, 69.7661, -6.37281, 65.1082, -9.3651, 60.4344, -11.722, 55.755, -13.459, 51.0802, -14.5913, 46.4201, -15.1343, 41.785, -15.1035, 37.1851, -14.5142, 32.6307, -13.3817, 28.1319, -11.7215, 23.699, -9.54909, 19.3422, -6.87973, 15.0717, -3.72886, 10.8976)
+polygon = PackedVector2Array(-10.7079, -22.8399, -0.430192, -24.2987, 12.3786, -25.1967, 44.0734, -25.4138, 121.128, -20.3617, 196.128, -9.57542, 225.254, -2.6247, 236.393, 1.13644, 240.94, 3.07541, 244.744, 5.04546, 246.417, 6.541, 248.018, 9.0182, 249.551, 12.4409, 251.018, 16.7774, 256.216, 42.6151, 263.563, 128.248, 267.329, 376.775, 258.931, 616.75, 251.073, 691.693, 248.789, 702.904, 247.602, 707.202, 246.388, 710.583, 245.148, 713.017, 243.885, 714.481, 242.578, 714.939, 241.252, 714.302, 239.748, 712.66, 237.896, 710.061, 233.217, 702.099, 220.316, 676.001, 86.8367, 340.095, 4.6735, 92.8641, -14.6501, 10.5286, -16.1017, -3.03197, -16.2504, -8.58585, -15.9975, -13.2803, -15.3306, -17.0843, -14.2377, -19.9678, -12.7041, -21.9024)
