@@ -58,6 +58,7 @@ var crouching = false
 var armed = true
 
 func _ready():
+	$AudioStreamPlayer2D.playing = true
 	particles.emitting = false
 	animation_tree.active = true
 	

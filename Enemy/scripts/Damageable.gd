@@ -10,11 +10,9 @@ signal got_hit
 signal death
 
 func hit(damage : int):
-	# TODO: do hit animation
 	Globs.shake(10, 0.2)
 	health -= damage
 	if(health <= 0):
-		# TODO: do death animation and start timer after which queue free
 		imune = false
 		emit_signal("death")
 		return

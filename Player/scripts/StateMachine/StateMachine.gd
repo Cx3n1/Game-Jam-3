@@ -12,7 +12,7 @@ var current_state: State
 @export
 var animation_tree: AnimationTree
 
-# Emitted when transitioning to a new state.
+# Emitted when transitioning to a new stae.
 signal transitioned(state_name)
 
 
