@@ -1,6 +1,6 @@
-[gd_scene load_steps=239 format=3 uid="uid://bqmy0c5knajyb"]
+[gd_scene load_steps=237 format=3 uid="uid://bqmy0c5knajyb"]
 
-[ext_resource type="Texture2D" uid="uid://dfuyqphccb72v" path="res://Map/assets/decorations.png" id="1_552xv"]
+[ext_resource type="TileSet" uid="uid://nna7tpdbrlvm" path="res://Map/MainMap.tres" id="1_wtf5v"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="2_x2vr0"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="3_4hgi3"]
 [ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="4_4nlfy"]
@@ -26,35 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://tb1ljqsh38cc" path="res://Map/nodes/SmartMap.tscn" id="25_wi7lu"]
 [ext_resource type="PackedScene" uid="uid://c0271qmwtgopd" path="res://Map/Parallax.tscn" id="26_561y3"]
 [ext_resource type="PackedScene" uid="uid://bu1lrv2g2ntok" path="res://Map/nodes/island_003.tscn" id="27_gedq7"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1fve"]
-texture = ExtResource("1_552xv")
-0:0/size_in_atlas = Vector2i(4, 6)
-0:0/0 = 0
-4:0/size_in_atlas = Vector2i(3, 6)
-4:0/0 = 0
-7:0/size_in_atlas = Vector2i(2, 5)
-7:0/0 = 0
-9:0/size_in_atlas = Vector2i(5, 5)
-9:0/0 = 0
-0:6/size_in_atlas = Vector2i(3, 2)
-0:6/0 = 0
-3:6/size_in_atlas = Vector2i(2, 1)
-3:6/0 = 0
-3:7/size_in_atlas = Vector2i(2, 1)
-3:7/0 = 0
-5:6/size_in_atlas = Vector2i(2, 2)
-5:6/0 = 0
-7:5/size_in_atlas = Vector2i(2, 3)
-7:5/0 = 0
-9:5/size_in_atlas = Vector2i(2, 3)
-9:5/0 = 0
-11:5/size_in_atlas = Vector2i(2, 3)
-11:5/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_gr8wn"]
-tile_size = Vector2i(3, 3)
-sources/0 = SubResource("TileSetAtlasSource_f1fve")
 
 [sub_resource type="Resource" id="Resource_6b8mg"]
 script = ExtResource("3_4hgi3")
@@ -1567,11 +1538,12 @@ metadata/_edit_vertical_guides_ = [-561.0]
 metadata/_edit_horizontal_guides_ = [2565.0]
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -2
 texture_filter = 1
 position = Vector2(-4, 1)
-tile_set = SubResource("TileSet_gr8wn")
+tile_set = ExtResource("1_wtf5v")
 format = 2
-layer_0/tile_data = PackedInt32Array(-458451, 0, 0, -458447, 262144, 0, -458444, 458752, 0, -589479, 262144, 0, -589476, 458752, 0, -65187, 196608, 7, -130721, 327680, 6, 131474, 196608, 6, 197095, 196608, 6, 1376746, 196608, 6, 1835335, 196608, 6, 2949488, 196608, 6, 2294150, 0, 6, 2359689, 196608, 7, 2359755, 0, 6, 2425294, 196608, 7, 2294026, 0, 6, 2359565, 196608, 7, 3539257, 327680, 6, 4260185, 327680, 6, 4456834, 327680, 6, -65095, 720896, 5)
+layer_0/tile_data = PackedInt32Array(-458451, 0, 0, -458447, 262144, 0, -458444, 458752, 0, -589479, 262144, 0, -589476, 458752, 0, -65187, 196608, 7, -130721, 327680, 6, 131474, 196608, 6, 197095, 196608, 6, 1376746, 196608, 6, 1835335, 196608, 6, 2949488, 196608, 6, 2294150, 0, 6, 2359689, 196608, 7, 2359755, 0, 6, 2425294, 196608, 7, 2294026, 0, 6, 2359565, 196608, 7, 3539257, 327680, 6, 4260185, 327680, 6, 4456834, 327680, 6, -65095, 720896, 5, 197177, 0, 0, -1048198, 262144, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(8, 1)
