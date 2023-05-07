@@ -54,7 +54,7 @@ anim_offset_max = 1.0
 [node name="tree_particles" type="GPUParticles2D"]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_66bhd")
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_f15sb")
 texture = ExtResource("1_45f2l")
 lifetime = 3.0
