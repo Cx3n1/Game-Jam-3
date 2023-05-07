@@ -1,0 +1,103 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://nna7tpdbrlvm"]
+
+[ext_resource type="Texture2D" uid="uid://dfuyqphccb72v" path="res://Map/assets/decorations.png" id="1_ws6ib"]
+[ext_resource type="Texture2D" uid="uid://c07k7i7a8lg1x" path="res://Map/assets/decore2.png" id="2_2saj0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f1fve"]
+texture = ExtResource("1_ws6ib")
+0:0/size_in_atlas = Vector2i(4, 6)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/1/flip_v = true
+0:0/2 = 2
+0:0/2/flip_v = true
+4:0/size_in_atlas = Vector2i(3, 6)
+4:0/next_alternative_id = 3
+4:0/0 = 0
+4:0/1 = 1
+4:0/1/flip_h = true
+4:0/2 = 2
+4:0/2/flip_h = true
+4:0/2/flip_v = true
+7:0/size_in_atlas = Vector2i(2, 5)
+7:0/next_alternative_id = 4
+7:0/0 = 0
+7:0/1 = 1
+7:0/1/flip_h = true
+7:0/2 = 2
+7:0/2/flip_v = true
+7:0/3 = 3
+7:0/3/flip_h = true
+7:0/3/flip_v = true
+9:0/size_in_atlas = Vector2i(5, 5)
+9:0/0 = 0
+0:6/size_in_atlas = Vector2i(3, 2)
+0:6/next_alternative_id = 2
+0:6/0 = 0
+0:6/1 = 1
+0:6/1/flip_h = true
+3:6/size_in_atlas = Vector2i(2, 1)
+3:6/0 = 0
+3:7/size_in_atlas = Vector2i(2, 1)
+3:7/0 = 0
+5:6/size_in_atlas = Vector2i(2, 2)
+5:6/0 = 0
+7:5/size_in_atlas = Vector2i(2, 3)
+7:5/next_alternative_id = 2
+7:5/0 = 0
+7:5/1 = 1
+7:5/1/flip_h = true
+9:5/size_in_atlas = Vector2i(2, 3)
+9:5/next_alternative_id = 2
+9:5/0 = 0
+9:5/1 = 1
+9:5/1/flip_h = true
+11:5/size_in_atlas = Vector2i(2, 3)
+11:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e40fe"]
+texture = ExtResource("2_2saj0")
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+1:0/size_in_atlas = Vector2i(1, 2)
+1:0/0 = 0
+2:0/size_in_atlas = Vector2i(1, 2)
+2:0/next_alternative_id = 2
+2:0/0 = 0
+2:0/1 = 1
+2:0/1/flip_h = true
+3:0/size_in_atlas = Vector2i(1, 2)
+3:0/0 = 0
+4:0/size_in_atlas = Vector2i(1, 2)
+4:0/0 = 0
+5:0/size_in_atlas = Vector2i(1, 2)
+5:0/0 = 0
+6:0/size_in_atlas = Vector2i(1, 2)
+6:0/0 = 0
+7:0/size_in_atlas = Vector2i(1, 2)
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+11:1/0 = 0
+10:1/0 = 0
+9:1/0 = 0
+8:1/0 = 0
+3:2/size_in_atlas = Vector2i(3, 4)
+3:2/next_alternative_id = 2
+3:2/0 = 0
+3:2/1 = 1
+3:2/1/flip_h = true
+0:2/size_in_atlas = Vector2i(3, 4)
+0:2/next_alternative_id = 3
+0:2/0 = 0
+0:2/2 = 2
+0:2/2/flip_h = true
+
+[resource]
+tile_size = Vector2i(3, 3)
+sources/0 = SubResource("TileSetAtlasSource_f1fve")
+sources/1 = SubResource("TileSetAtlasSource_e40fe")
